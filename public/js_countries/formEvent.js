@@ -1,6 +1,6 @@
 export const decalreFormEvent = (_doApi) => {
   let id_form = document.querySelector("#id_form");
-  id_form.addEventListener("submit",(e) => {
+  id_form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     let dataBody = {
@@ -11,36 +11,36 @@ export const decalreFormEvent = (_doApi) => {
     }
 
     console.log(dataBody);
-    addNewCountry(dataBody,_doApi);
+    addNewCountry(dataBody, _doApi);
   })
 }
 
 
-const addNewCountry = async(_bodyData,_doApi) => {
-  let myUrl = "http://localhost:3000/countries"
-  try{
+const addNewCountry = async (_bodyData, _doApi) => {
+  let myUrl = "https://test-maor.onrender.com/countries"
+  try {
     let resp = await axios({
-      url:myUrl,
+      url: myUrl,
       // שיטת השיגור אם פוסט, פוט או דיליט
-      method:"POST",
+      method: "POST",
       // הבאדי שנרצה לשלוח
-      data:JSON.stringify(_bodyData),
+      data: JSON.stringify(_bodyData),
       // כדי שהשרת יבין שזה ג'ייסון
-      headers:{
+      headers: {
         'content-type': "application/json"
       }
-    })  
+    })
     // אם הצלחנו אנחנו יודעים שנקבל איי די 
-    if(resp.data._id){
+    if (resp.data._id) {
       alert("Country added");
       _doApi();
       // לקרוא מחדש לדו איי פי איי שנמצא בקובץ אפ
     }
-    else{
+    else {
       alert("there problem , try again")
     }
   }
-  catch(err){
+  catch (err) {
     console.log(err);
     alert("There problem, come back later")
   }

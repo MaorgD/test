@@ -18,7 +18,7 @@ const declareEvents = () => {
 }
 
 const doApiPost = async (_body) => {
-  let myurl = "http://localhost:3000/users/login";
+  let myurl = "https://test-maor.onrender.com/users/login";
   try {
     let resp = await axios({
       url: myurl,
@@ -40,7 +40,7 @@ const doApiPost = async (_body) => {
       alert("there problem")
     }
   }
-  catch(err){
+  catch (err) {
     console.log(err);
     alert("Username or password worng");
   }

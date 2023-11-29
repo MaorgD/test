@@ -1,5 +1,5 @@
-export default class CountryClass{
-  constructor(_parent,_item,_index,_doApi) {
+export default class CountryClass {
+  constructor(_parent, _item, _index, _doApi) {
     this.parent = _parent;
     this.name = _item.name;
     this.capital = _item.capital;
@@ -10,7 +10,7 @@ export default class CountryClass{
     this.doApi = _doApi;
   }
 
-  render(){
+  render() {
     let tr = document.createElement("tr");
     document.querySelector(this.parent).append(tr);
 
@@ -23,32 +23,32 @@ export default class CountryClass{
     `
 
     let delBtn = tr.querySelector(".del-btn");
-    delBtn.addEventListener("click" , () => {
+    delBtn.addEventListener("click", () => {
       // alert(this.id);
       confirm("Are you sure you want to delete?") && this.delCountry()
     })
   }
 
-  async delCountry(){
-    let url = "http://localhost:3000/countries/"+this.id;
-    try{
+  async delCountry() {
+    let url = "https://test-maor.onrender.com/countries/" + this.id;
+    try {
 
-      let resp =  await axios({
+      let resp = await axios({
         url,
-        method:"DELETE",
-        headers:{
+        method: "DELETE",
+        headers: {
           'content-type': "application/json"
         }
       })
-      if(resp.data.deletedCount == 1){
+      if (resp.data.deletedCount == 1) {
         // alert("Country deleted")
         this.doApi();
       }
-      else{
+      else {
         alert("There problem")
       }
     }
-    catch(err){
+    catch (err) {
       console.log(err);
       alert("There problem, come back later")
     }
