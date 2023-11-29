@@ -20,7 +20,7 @@ exports.auth = (req,res,next) => {
     return res.status(401).json({msg:"Token invalid or expired, log in again or you hacker!"})
   }
 }
-//                                       בדיקת אדמין 
+//                                           בדיקת אדמין 
 exports.authAdmin = (req,res,next) => {
   let token = req.header("x-api-key");
   if(!token){
